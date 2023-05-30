@@ -41,3 +41,27 @@ class Comment(models.Model):
 
     def __str__(self):
         return f"{self.content} {self.user} {self.product}"
+
+class Exchange(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="exchanges")
+    product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name="exchanges")
+    exchange = models.ForeignKey(Product, on_delete=models.CASCADE, related_name="exchanges2")
+    confirmation = models.BooleanField(null=True, default=False)
+
+    def __str__(self):
+        return f"{self.user} {self.product} {self.exchange}"
+    
+class Gift(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="gifts")
+    product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name="gifts")
+    confirmation = models.BooleanField(null=True, default=False)
+
+    def __str__(self):
+        return f"{self.user} {self.product}"
+    
+class Watchlist(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="watchlists")
+    product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name="watchlists")
+
+    def __str__(self):
+        return f"{self.user} {self.product}"
