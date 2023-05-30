@@ -82,3 +82,32 @@ class SearchForm(forms.Form):
         cleaned_data = super().clean()
         if not any(cleaned_data.values()):
             raise ValidationError("Au moins un champ doit être rempli.")
+        
+
+
+#_________________________Exchange form
+
+class ExchangeForm(forms.Form):
+    exchange = forms.ModelChoiceField(queryset=Product.objects.none(), required=True)
+    
+
+    def __init__(self, *args, **kwargs):
+        self.request = kwargs.pop('request', None)  
+        super(ExchangeForm, self).__init__(*args, **kwargs)
+        if self.request is not None:
+            self.fields['exchange'].queryset = Product.objects.filter(user=self.request.user)
+
+    class Meta:
+        fields = [
+            "exchange"
+        ]
+
+
+# class Exchange(models.Model):
+#     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="exchanges")
+#     product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name="exchanges")
+#     exchange = models.ForeignKey(Product, on_delete=models.CASCADE, related_name="exchanges2")
+#     confirmation = models.BooleanField(null=True, default=False)
+
+#     def __str__(self):
+#         return f"{self.user} {self.product} {self.exchange}"
