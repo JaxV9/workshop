@@ -3,4 +3,9 @@
 
 {% block body %}
 
+<form method="GET" action="{% url 'products' %}">
+    {{ form.as_p }}
+    <input type="submit" value="Search">
+</form>
+
 {% endblock %}

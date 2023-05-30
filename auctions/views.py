@@ -4,8 +4,9 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth.models import User
-
+#from django.contrib.auth.models import User
+from .models import User, Category, State, Product, Comment
+from .forms import ProductForm, SearchForm
 
 
 
@@ -14,10 +15,62 @@ from django.contrib.auth.models import User
 
 
 def index(request):  # Affiche la page d'accueil avec la liste des annonces
-    return render(request, "auctions/index.html")
+    
+    search_form = SearchForm(request.GET or None)
+    
+    return render(request, "auctions/index.html", {
+        "products": Product.objects.all(),
+        "form": search_form
+    })
 
 
 
+#_________________________________________________________________________create_product
+
+@login_required(login_url='/login')
+def create_product(request):
+
+    if request.method == "POST":
+        form = ProductForm(request.POST)
+        if form.is_valid():
+            product = form.save(commit=False)
+            product.user = request.user
+            product.save()
+            return redirect(index)
+        else:
+            return render(request, "auctions/create_product.html", {
+                "form": form
+            })
+    
+    else:
+        form = ProductForm()
+
+    return render(request, "auctions/create_product.html",{
+        "form": form
+    })
+
+
+#_________________________________________________________________________product
+
+@login_required(login_url='/login')
+def products(request):
+    search = SearchForm(request.GET)
+    products = Product.objects.all()
+    if search.is_valid():
+        if search.cleaned_data["category"]:
+            products = products.filter(category=search.cleaned_data["category"])
+        if search.cleaned_data["product"]:
+            products = products.filter(title__icontains=search.cleaned_data["product"])
+        if search.cleaned_data["localisation"]:
+            products = products.filter(localisation__icontains=search.cleaned_data["localisation"])
+
+    return render(request, "auctions/products.html", {
+        "products": products,
+        "search": search
+    })
+
+
+#_________________________________________________________________________categories
 
 
 # _________________________________________________________________________PAGE DE CONNEXION

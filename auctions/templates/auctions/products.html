@@ -1,0 +1,17 @@
+{% extends "auctions/layout.html" %}
+
+{% block body %}
+
+<form method="GET">
+    {{ form.as_p }}
+    <input type="submit" value="Search">
+</form>
+
+    {% for product in products %}
+
+        <p>{{ product.title }}</p>
+        <img src="{{ product.image }}" class="product">
+
+    {% endfor %}
+
+{% endblock %}
