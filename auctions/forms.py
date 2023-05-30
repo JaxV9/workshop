@@ -25,7 +25,7 @@ class ProductForm(forms.ModelForm):
     )
 
     exchange = forms.BooleanField(
-        required=True,
+        required=False,
         label='Echange',
         widget=forms.CheckboxInput(attrs={'class': 'exchange_product_form'})
     )
@@ -43,8 +43,8 @@ class ProductForm(forms.ModelForm):
     )
 
     price = forms.DecimalField(
-        max_digits=1,
-        decimal_places=1,
+        max_digits=10,
+        decimal_places=2,
         required=True,
         label='Prix',
         widget=forms.NumberInput(attrs={'class': 'price_product_form'})

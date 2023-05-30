@@ -6,6 +6,7 @@ from django.urls import reverse
 from django.contrib.auth.decorators import login_required
 #from django.contrib.auth.models import User
 from .models import User, Category, State, Product, Comment
+from .forms import ProductForm
 
 
 
@@ -14,15 +15,35 @@ from .models import User, Category, State, Product, Comment
 
 
 def index(request):  # Affiche la page d'accueil avec la liste des annonces
-    return render(request, "auctions/index.html")
+    return render(request, "auctions/index.html", {
+        "products": Product.objects.all()
+    })
 
 
 
 #_________________________________________________________________________MODE
 
-
+@login_required(login_url='/login')
 def create_product(request):
-    return render(request, "auctions/create_product.html")
+
+    if request.method == "POST":
+        form = ProductForm(request.POST)
+        if form.is_valid():
+            product = form.save(commit=False)
+            product.user = request.user
+            product.save()
+            return redirect(index)
+        else:
+            return render(request, "auctions/create_product.html", {
+                "form": form
+            })
+    
+    else:
+        form = ProductForm()
+
+    return render(request, "auctions/create_product.html",{
+        "form": form
+    })
 
 
 
