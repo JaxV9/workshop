@@ -1,0 +1,12 @@
+{% extends "auctions/layout.html" %}
+
+{% block body %}
+
+{% for product in products %}
+
+<p>{{ product.title }}</p>
+<img src="{{ product.image }}" class="product">
+
+{% endfor %}
+
+{% endblock %}

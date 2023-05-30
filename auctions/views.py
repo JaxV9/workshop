@@ -21,7 +21,7 @@ def index(request):  # Affiche la page d'accueil avec la liste des annonces
 
 
 
-#_________________________________________________________________________MODE
+#_________________________________________________________________________create_product
 
 @login_required(login_url='/login')
 def create_product(request):
@@ -46,7 +46,13 @@ def create_product(request):
     })
 
 
+#_________________________________________________________________________product
 
+@login_required(login_url='/login')
+def products(request):
+    return render(request, "auctions/products.html", {
+        "products": Product.objects.all()
+    })
 
 
 # _________________________________________________________________________PAGE DE CONNEXION
