@@ -2,8 +2,8 @@
 
 {% block body %}
 
-<form method="GET">
-    {{ form.as_p }}
+<form method="GET" action="{% url 'products' %}">
+    {{ search.as_p }}
     <input type="submit" value="Search">
 </form>
 

@@ -50,7 +50,7 @@ def create_product(request):
     })
 
 
-#_________________________________________________________________________product
+#_________________________________________________________________________product result
 
 @login_required(login_url='/login')
 def products(request):
