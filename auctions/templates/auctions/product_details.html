@@ -15,4 +15,6 @@
         <p>{{ product.state }}</p>
         <p>{{ product.user }}</p>
 
+        <a href="mailto: {{ product.user.email }}"><button>Contacter l'annonceur</button></a>
+
 {% endblock %}
