@@ -91,5 +91,3 @@ class SearchForm(forms.Form):
         cleaned_data = super().clean()
         if not any(cleaned_data.values()):
             raise ValidationError("Au moins un champ doit être rempli.")
-        
-        

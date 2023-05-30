@@ -16,7 +16,7 @@ from .forms import ProductForm, SearchForm
 
 def index(request):  # Affiche la page d'accueil avec la liste des annonces
     
-    search_form = SearchForm(request.GET or None)
+    search_form = SearchForm(request.GET or None) # Crée un formulaire de recherche
     
     return render(request, "auctions/index.html", {
         "products": Product.objects.all(),
@@ -55,11 +55,12 @@ def create_product(request):
 
 def products(request):
     search = SearchForm(request.GET)
-    products = Product.objects.all()
+    products = []
 
     no_result = ""
 
     if search.is_valid():
+        products = Product.objects.all()
         if search.cleaned_data["category"]:
             products = products.filter(category=search.cleaned_data["category"])
         if search.cleaned_data["product"]:
@@ -77,6 +78,8 @@ def products(request):
         "search": search,
         "no_result": no_result
     })
+
+
 
 
 
