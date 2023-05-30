@@ -76,3 +76,9 @@ class SearchForm(forms.Form):
     category = forms.ModelChoiceField(queryset=Category.objects.all(), required=False)
     product = forms.CharField(max_length=64, required=False)
     localisation = forms.CharField(max_length=64, required=False)
+
+    def __init__(self, *args, **kwargs):
+        super(SearchForm, self).__init__(*args, **kwargs)
+        self.fields['category'].widget.attrs.update({'class': 'category_field'})
+        self.fields['product'].widget.attrs.update({'class': 'product_field'})
+        self.fields['localisation'].widget.attrs.update({'class': 'localisation_field'})
