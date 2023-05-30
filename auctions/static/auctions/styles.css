@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
 *,
@@ -79,3 +80,28 @@ a:hover {
 .hide {
     display: none;
 }
+=======
+.container {  
+    display: grid;
+    grid-template-columns: 200px 200px;
+    grid-template-rows: 200px 200px 200px;
+    gap: 0px 0px;
+    grid-auto-flow: row;
+    height:700px;
+    margin: 0;
+    max-width: 100%;
+    background-image: url('images/fond.jpg');
+}
+  
+.container .exchange {
+    width: 1300px;
+    height: 400px;
+    margin-top: 150px;
+    margin-left: 100px;
+    padding: 10px;
+    position: relative;
+    border-radius: 30px;
+    background-color: white;
+}
+  
+>>>>>>> cbb0497711fef9a6eac348058d36420169ed6969

@@ -1,6 +1,22 @@
 {% extends "auctions/layout.html" %}
+<<<<<<< HEAD
 {% load static %}
 
 {% block body %}
 
+=======
+
+{% block body %}
+
+    <form method="post" action="{% url 'create_product' %}">
+        {% csrf_token %}
+        {% for field in form %}
+            {{ field.errors }}
+        {% endfor %}
+
+        {{ form.as_p }}
+        <input type="submit" value="Create">
+    </form>
+
+>>>>>>> cbb0497711fef9a6eac348058d36420169ed6969
 {% endblock %}

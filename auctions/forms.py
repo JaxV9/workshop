@@ -25,7 +25,11 @@ class ProductForm(forms.ModelForm):
     )
 
     exchange = forms.BooleanField(
+<<<<<<< HEAD
         required=True,
+=======
+        required=False,
+>>>>>>> cbb0497711fef9a6eac348058d36420169ed6969
         label='Echange',
         widget=forms.CheckboxInput(attrs={'class': 'exchange_product_form'})
     )
@@ -43,8 +47,13 @@ class ProductForm(forms.ModelForm):
     )
 
     price = forms.DecimalField(
+<<<<<<< HEAD
         max_digits=1,
         decimal_places=1,
+=======
+        max_digits=10,
+        decimal_places=2,
+>>>>>>> cbb0497711fef9a6eac348058d36420169ed6969
         required=True,
         label='Prix',
         widget=forms.NumberInput(attrs={'class': 'price_product_form'})
@@ -70,3 +79,18 @@ class ProductForm(forms.ModelForm):
             "localisation"
         ]
 
+<<<<<<< HEAD
+=======
+#_________________________Search form
+
+class SearchForm(forms.Form):
+    category = forms.ModelChoiceField(queryset=Category.objects.all(), required=False)
+    product = forms.CharField(max_length=64, required=False)
+    localisation = forms.CharField(max_length=64, required=False)
+
+    def __init__(self, *args, **kwargs):
+        super(SearchForm, self).__init__(*args, **kwargs)
+        self.fields['category'].widget.attrs.update({'class': 'category_field'})
+        self.fields['product'].widget.attrs.update({'class': 'product_field'})
+        self.fields['localisation'].widget.attrs.update({'class': 'localisation_field'})
+>>>>>>> cbb0497711fef9a6eac348058d36420169ed6969

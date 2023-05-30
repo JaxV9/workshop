@@ -1,11 +1,17 @@
 {% extends "auctions/layout.html" %}
-{% load static %}
 
 {% block body %}
 
 <form method="GET" action="{% url 'products' %}">
-    {{ form.as_p }}
+    {{ search.as_p }}
     <input type="submit" value="Search">
 </form>
+
+    {% for product in products %}
+
+        <p>{{ product.title }}</p>
+        <img src="{{ product.image }}" class="product">
+
+    {% endfor %}
 
 {% endblock %}
