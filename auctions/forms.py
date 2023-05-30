@@ -42,15 +42,7 @@ class ProductForm(forms.ModelForm):
         required=True,
         label='Catégorie'
     )
-
-    price = forms.DecimalField(
-        max_digits=10,
-        decimal_places=2,
-        required=True,
-        label='Prix',
-        widget=forms.NumberInput(attrs={'class': 'price_product_form'})
-    )
-
+    
     localisation = forms.CharField(
         max_length=64,
         required=True,
@@ -67,7 +59,6 @@ class ProductForm(forms.ModelForm):
             "exchange",
             "state",
             "category",
-            "price",
             "localisation"
         ]
 
