@@ -7,6 +7,10 @@
     <input type="submit" value="Search">
 </form>
 
+
+    <p>{{ no_result }}</p>
+
+
     {% for product in products %}
 
         <p>{{ product.user }}</p>
@@ -29,15 +33,3 @@
     {% endfor %}
 
 {% endblock %}
-
-utilisateur
-
-image
-
-catégories
-
-titre
-
-lieu
-
-date

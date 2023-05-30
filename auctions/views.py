@@ -56,6 +56,9 @@ def create_product(request):
 def products(request):
     search = SearchForm(request.GET)
     products = Product.objects.all()
+
+    no_result = ""
+
     if search.is_valid():
         if search.cleaned_data["category"]:
             products = products.filter(category=search.cleaned_data["category"])
@@ -64,9 +67,15 @@ def products(request):
         if search.cleaned_data["localisation"]:
             products = products.filter(localisation__icontains=search.cleaned_data["localisation"])
 
+
+    if not products:
+        no_result = "Aucun résultat"
+
+
     return render(request, "auctions/products.html", {
         "products": products,
-        "search": search
+        "search": search,
+        "no_result": no_result
     })
 
 
