@@ -52,7 +52,7 @@ def create_product(request):
 
 #_________________________________________________________________________product result
 
-@login_required(login_url='/login')
+
 def products(request):
     search = SearchForm(request.GET)
     products = Product.objects.all()
@@ -69,8 +69,6 @@ def products(request):
         "search": search
     })
 
-
-#_________________________________________________________________________categories
 
 
 # _________________________________________________________________________PAGE DE CONNEXION
