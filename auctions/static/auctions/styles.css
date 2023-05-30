@@ -9,7 +9,7 @@ html {
     font-weight: 500;
 }
 
-/* Navbar */
+/* Header */
 
 header {
     position: fixed;
@@ -25,6 +25,11 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
+}
+
+.nav-logo {
+    width: 46px;
+    cursor: pointer;
 }
 
 ul {
@@ -68,8 +73,8 @@ a:hover {
 }
 
 .dropdown-content {
-    right: -42px;
-    width: 124px;
+    right: -50px;
+    width: 145px;
     position: absolute;
     background-color: #F5F5F5;
     padding: 0.5rem;
@@ -79,6 +84,8 @@ a:hover {
 .hide {
     display: none;
 }
+
+/* Main */
 
 .main {
     display: flex;
