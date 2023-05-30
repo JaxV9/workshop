@@ -19,12 +19,13 @@
 
                 {% csrf_token %}
 
-                <input type="hidden" name="proposition_exchange" value="proposition_exchange">
                 <select name="products_user" id="products_user">
                     {% for product_user in products_user %}
                         <option value="{{ product_user.id }}">{{ product_user.title }}</option>
                     {% endfor %}
-                <button type="submit" value="Ajouter aux favoris">Proposer d'échanger contre un produit</button>
+                </select>
+
+                <button type="submit" value="J'échange">J'échange</button>
 
             </form>
         {% endif %}
