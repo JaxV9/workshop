@@ -15,6 +15,7 @@
                     <li><a href="{% url 'index' %}">Accueil</a></li>
                     {% if user.is_authenticated %}
                         <li><a href="{% url 'logout' %}">Se déconnecter</a></li>
+                        <li><a href="{% url 'create_product' %}">Créer un produit</a></li>
                     {% else %}
                         <li><a href="{% url 'login' %}">Se connecter</a></li>
                         <li><a href="{% url 'register' %}">S'inscrire</a></li>

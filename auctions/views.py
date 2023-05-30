@@ -18,6 +18,14 @@ def index(request):  # Affiche la page d'accueil avec la liste des annonces
 
 
 
+#_________________________________________________________________________MODE
+
+
+def create_product(request):
+    return render(request, "auctions/create_product.html")
+
+
+
 
 
 # _________________________________________________________________________PAGE DE CONNEXION
