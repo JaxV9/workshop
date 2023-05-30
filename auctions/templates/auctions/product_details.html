@@ -1,17 +1,18 @@
 {% extends "auctions/layout.html" %}
 
+
 {% block body %}
 
-<form method="GET" action="{% url 'products' %}">
-    {{ search.as_p }}
-    <input type="submit" value="Search">
-</form>
+    <p><a href="/products?category={{ product.category.id }}">{{ product.category}}</a> &gt;
 
-    {% for product in products %}
+        <a href="/products?category={{ product.category.id }}&localisation={{ product.localisation }}">{{ product.localisation }}</a></p>
 
+        <img src="{{ product.image }}" class="product_details">
+        <p>{{ product.category }}</p>
         <p>{{ product.title }}</p>
-        <img src="{{ product.image }}" class="product">
-
-    {% endfor %}
+        <p>{{ product.description }}</p>
+        <p>{{ product.localisation }}</p>
+        <p>{{ product.state }}</p>
+        <p>{{ product.user }}</p>
 
 {% endblock %}
