@@ -9,9 +9,25 @@
 
     {% for product in products %}
 
-        <p>{{ product.title }}</p>
+        <p>{{ product.user }}</p>
         <img src="{{ product.image }}" class="product">
+        <p>{{ product.category }}</p>
+        <p>{{ product.title }}</p>
+        <p>{{ product.localisation }}</p>
+        <p>{{ product.date }}</p>
 
     {% endfor %}
 
 {% endblock %}
+
+utilisateur
+
+image
+
+catégories
+
+titre
+
+lieu
+
+date
