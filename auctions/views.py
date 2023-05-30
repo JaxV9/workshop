@@ -6,10 +6,7 @@ from django.urls import reverse
 from django.contrib.auth.decorators import login_required
 #from django.contrib.auth.models import User
 from .models import User, Category, State, Product, Comment
-<<<<<<< HEAD
-=======
 from .forms import ProductForm, SearchForm
->>>>>>> cbb0497711fef9a6eac348058d36420169ed6969
 
 
 
@@ -28,16 +25,6 @@ def index(request):  # Affiche la page d'accueil avec la liste des annonces
 
 
 
-<<<<<<< HEAD
-#_________________________________________________________________________MODE
-
-
-def create_product(request):
-    return render(request, "auctions/create_product.html")
-
-
-
-=======
 #_________________________________________________________________________create_product
 
 @login_required(login_url='/login')
@@ -84,7 +71,6 @@ def products(request):
 
 
 #_________________________________________________________________________categories
->>>>>>> cbb0497711fef9a6eac348058d36420169ed6969
 
 
 # _________________________________________________________________________PAGE DE CONNEXION

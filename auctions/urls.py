@@ -9,10 +9,6 @@ urlpatterns = [
     path("login", views.login_view, name="login"),
     path("logout", views.logout_view, name="logout"),
     path("register", views.register, name="register"),
-<<<<<<< HEAD
-    path("create_product", views.create_product, name="create_product")
-=======
     path("create_product", views.create_product, name="create_product"),
     path("products", views.products, name="products"),
->>>>>>> cbb0497711fef9a6eac348058d36420169ed6969
 ]

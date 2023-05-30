@@ -2,7 +2,6 @@
 
 <!DOCTYPE html>
 <html lang="en">
-<<<<<<< HEAD
 
 <head>
     <title>{% block title %}Auctions{% endblock %}</title>
@@ -55,32 +54,6 @@
             </div>
         </nav>
     </header>
-=======
-    <head>
-        <title>{% block title %}Troc'ons{% endblock %}</title>
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-        <link href="{% static 'auctions/styles.css' %}" rel="stylesheet">
-    </head>
-    <body>
-        <header>
-            <nav>
-                <ul>
-                    <li><a href="{% url 'index' %}">Accueil</a></li>
-                    {% if user.is_authenticated %}
-                        <li><a href="{% url 'logout' %}">Se déconnecter</a></li>
-                        <li><a href="{% url 'create_product' %}">Créer un produit</a></li>
-                        <li><a href="{% url 'products' %}">liste des produits</a></li>
-                    {% else %}
-                        <li><a href="{% url 'login' %}">Se connecter</a></li>
-                        <li><a href="{% url 'register' %}">S'inscrire</a></li>
-                    {% endif %}
-                </ul>
-            </nav>
-        </header>
-        <div class="container">
-            <div class="exchange"></div>
-        </div>
->>>>>>> cbb0497711fef9a6eac348058d36420169ed6969
     <div class="under_body">
         {% block body %}
         {% endblock %}
