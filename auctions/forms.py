@@ -70,3 +70,9 @@ class ProductForm(forms.ModelForm):
             "localisation"
         ]
 
+#_________________________Search form
+
+class SearchForm(forms.Form):
+    category = forms.ModelChoiceField(queryset=Category.objects.all(), required=False)
+    product = forms.CharField(max_length=64, required=False)
+    localisation = forms.CharField(max_length=64, required=False)

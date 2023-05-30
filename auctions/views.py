@@ -6,7 +6,7 @@ from django.urls import reverse
 from django.contrib.auth.decorators import login_required
 #from django.contrib.auth.models import User
 from .models import User, Category, State, Product, Comment
-from .forms import ProductForm
+from .forms import ProductForm, SearchForm
 
 
 
@@ -15,8 +15,12 @@ from .forms import ProductForm
 
 
 def index(request):  # Affiche la page d'accueil avec la liste des annonces
+    
+    search_form = SearchForm(request.GET or None)
+    
     return render(request, "auctions/index.html", {
-        "products": Product.objects.all()
+        "products": Product.objects.all(),
+        "form": search_form
     })
 
 
@@ -50,9 +54,23 @@ def create_product(request):
 
 @login_required(login_url='/login')
 def products(request):
+    search = SearchForm(request.GET)
+    products = Product.objects.all()
+    if search.is_valid():
+        if search.cleaned_data["category"]:
+            products = products.filter(category=search.cleaned_data["category"])
+        if search.cleaned_data["product"]:
+            products = products.filter(title__icontains=search.cleaned_data["product"])
+        if search.cleaned_data["localisation"]:
+            products = products.filter(localisation__icontains=search.cleaned_data["localisation"])
+
     return render(request, "auctions/products.html", {
-        "products": Product.objects.all()
+        "products": products,
+        "search": search
     })
+
+
+#_________________________________________________________________________categories
 
 
 # _________________________________________________________________________PAGE DE CONNEXION

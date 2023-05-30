@@ -2,11 +2,16 @@
 
 {% block body %}
 
-{% for product in products %}
+<form method="GET">
+    {{ form.as_p }}
+    <input type="submit" value="Search">
+</form>
 
-<p>{{ product.title }}</p>
-<img src="{{ product.image }}" class="product">
+    {% for product in products %}
 
-{% endfor %}
+        <p>{{ product.title }}</p>
+        <img src="{{ product.image }}" class="product">
+
+    {% endfor %}
 
 {% endblock %}
