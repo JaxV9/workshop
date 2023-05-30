@@ -79,24 +79,23 @@ a:hover {
 .hide {
     display: none;
 }
-.containerh {  
+
+.main {
     display: flex;
     justify-content: center;
-    height:700px;
+    align-items: center;
+    height: 700px;
     margin: 0;
     max-width: 100%;
     background-image: url('images/fond.jpg');
 }
-  
-.containerh .exchange {
+
+.main .exchange {
     width: 80%;
     height: 400px;
-    margin-top: 150px;
-    margin-left: 100px;
     padding: 10px;
     position: relative;
     border-radius: 30px;
     top: 75px;
     background-color: white;
 }
-  
