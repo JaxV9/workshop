@@ -11,6 +11,16 @@
 
         <p>{{ product.user }}</p>
         <img src="{{ product.image }}" class="product">
+
+        {% if product.exchange == False %}
+
+            <p>Don</p>
+
+        {% else %}
+
+            <p>Échange</p>
+
+        {% endif %}
         <p>{{ product.category }}</p>
         <p>{{ product.title }}</p>
         <p>{{ product.localisation }}</p>
