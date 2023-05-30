@@ -99,3 +99,7 @@ a:hover {
     top: 75px;
     background-color: white;
 }
+
+.card {
+    width: fit-content;
+}

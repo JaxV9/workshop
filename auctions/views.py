@@ -81,6 +81,13 @@ def products(request):
 
 
 
+#_________________________________________________________________________product details
+
+def product_details(request, product_id):
+    product = get_object_or_404(Product, pk=product_id)
+    return render(request, "auctions/product_details.html", {
+        "product": product
+    })
 
 
 # _________________________________________________________________________PAGE DE CONNEXION
