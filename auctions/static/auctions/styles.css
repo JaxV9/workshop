@@ -1,16 +1,24 @@
 .container {  
     display: grid;
-    grid-template-columns: 200px 200px 200px;
+    grid-template-columns: 200px 200px;
     grid-template-rows: 200px 200px 200px;
     gap: 0px 0px;
     grid-auto-flow: row;
     border: solid;
-    height: auto;
+    height:700px;
+    margin: 0;
+    max-width: 100%;
+    background-image: url('/static/images/fond.jpg');
 }
   
-.exchange {
-    grid-area: 2 / 1 / 2 / 4;
-    height: auto;
+.container .exchange {
+    width: 1300px;
+    height: 400px;
+    margin-top: 150px;
+    margin-left: 100px;
+    padding: 10px;
+    position: relative;
     border: solid;
+    border-radius: 30px;
 }
   
