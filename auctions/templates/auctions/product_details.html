@@ -1,17 +1,37 @@
 {% extends "auctions/layout.html" %}
 
+
 {% block body %}
 
-<form method="GET" action="{% url 'products' %}">
-    {{ search.as_p }}
-    <input type="submit" value="Rechercher un article">
-</form>
+    <p><a href="/products?category={{ product.category.id }}">{{ product.category}}</a> &gt;
 
-    {% for product in products %}
+        <a href="/products?category={{ product.category.id }}&localisation={{ product.localisation }}">{{ product.localisation }}</a></p>
 
+        <img src="{{ product.image }}" class="product_details">
+        <p>{{ product.category }}</p>
         <p>{{ product.title }}</p>
-        <img src="{{ product.image }}" class="product">
+        <p>{{ product.description }}</p>
+        <p>{{ product.localisation }}</p>
+        <p>{{ product.state }}</p>
 
-    {% endfor %}
+        {% if product.exchange == True%} {% comment %}Si l'annonce est une enchère alors on propose d'échanger{% endcomment %}
+            <form action="" method="post">
+
+                {% csrf_token %}
+
+                <input type="hidden" name="proposition_exchange" value="proposition_exchange">
+                <select name="products_user" id="products_user">
+                    {% for product_user in products_user %}
+                        <option value="{{ product_user.id }}">{{ product_user.title }}</option>
+                    {% endfor %}
+                <button type="submit" value="Ajouter aux favoris">Proposer d'échanger contre un produit</button>
+
+            </form>
+        {% endif %}
+
+
+        <p>{{ product.user }}</p>
+
+        <a href="mailto: {{ product.user.email }}"><button>Contacter l'annonceur</button></a>
 
 {% endblock %}
