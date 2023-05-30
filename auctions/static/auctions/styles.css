@@ -79,26 +79,23 @@ a:hover {
 .hide {
     display: none;
 }
-.container {  
-    display: grid;
-    grid-template-columns: 200px 200px;
-    grid-template-rows: 200px 200px 200px;
-    gap: 0px 0px;
-    grid-auto-flow: row;
-    height:700px;
+
+.main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 700px;
     margin: 0;
     max-width: 100%;
     background-image: url('images/fond.jpg');
 }
-  
-.container .exchange {
-    width: 1300px;
+
+.main .exchange {
+    width: 80%;
     height: 400px;
-    margin-top: 150px;
-    margin-left: 100px;
     padding: 10px;
     position: relative;
     border-radius: 30px;
+    top: 75px;
     background-color: white;
 }
-  
