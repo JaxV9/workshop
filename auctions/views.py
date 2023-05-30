@@ -4,8 +4,8 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth.models import User
-
+#from django.contrib.auth.models import User
+from .models import User, Category, State, Product, Comment
 
 
 
@@ -15,6 +15,14 @@ from django.contrib.auth.models import User
 
 def index(request):  # Affiche la page d'accueil avec la liste des annonces
     return render(request, "auctions/index.html")
+
+
+
+#_________________________________________________________________________MODE
+
+
+def create_product(request):
+    return render(request, "auctions/create_product.html")
 
 
 
