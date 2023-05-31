@@ -5,6 +5,13 @@ from django.db import models
 
 class User(AbstractUser):
     image = models.URLField(max_length=1000, blank=True)
+    noisette = models.IntegerField(default=0, validators=[MinValueValidator(0), MaxValueValidator(1000)])
+    phone = models.CharField(max_length=20, blank=True)
+    city = models.CharField(max_length=64, blank=True)
+    country = models.CharField(max_length=64, blank=True)
+    postal_code = models.CharField(max_length=5, blank=True)
+    biography = models.TextField(blank=True)
+    rue = models.CharField(max_length=100, blank=True)
 
 class Category(models.Model):
     name = models.CharField(max_length=64)
