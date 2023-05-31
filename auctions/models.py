@@ -12,7 +12,7 @@ class User(AbstractUser):
     postal_code = models.CharField(max_length=5, blank=True)
     biography = models.TextField(blank=True)
     rue = models.CharField(max_length=100, blank=True)
-
+    
 class Category(models.Model):
     name = models.CharField(max_length=64)
 
