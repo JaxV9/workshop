@@ -6,21 +6,23 @@
         <div class="addexchange">
             <img src="../../static/auctions/images/plus.png" alt="plus" class="plus"><a href="{% url 'create_product' %}" class="ajout">Ajouter un article</a>
         </div>
-        <div class="exchange">
 
+        <div class="exchange">
+            <div class="lestypes">
+                <div class="types active" id="types"><p>J'échange</p></div>
+            </div>
             <form method="GET" action="{% url 'products' %}">
                 {% csrf_token %}
                 {% for field in form %}
-                <div>
+                <div class="test">
                     {{ field.errors }}
-                    <div>{{ field.label_tag }}
-                    {{ field }}</div>
+                    {{ field.label_tag }}
+                    {{ field }}
                 </div>
                 {% endfor %}
-                <input type="submit" value="Rechercher un article">
+                <input type="submit" value="Rechercher un article" class="research">
             </form>
         </div>
     </div>
-
 
 {% endblock %}

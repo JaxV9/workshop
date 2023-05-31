@@ -98,7 +98,7 @@ a:hover {
     background-repeat: no-repeat;
 }
 
-.main .exchange {
+.main .exchange{
     width: 80%;
     height: 350px;
     padding: 10px;
@@ -207,7 +207,7 @@ footer {
 
 .main .addexchange {
     position: absolute;
-    top: 40%;
+    top: 35%;
     right: 10%;
     background-color: white;
     padding: 13px;
@@ -243,6 +243,9 @@ footer {
     padding-bottom: 1%;
     border-radius: 15px;
     border: none;
+    display: flex;
+    margin-left: 4%;
+    margin-top: 5%;
 }
 
 .product_field {
@@ -254,13 +257,21 @@ footer {
     width: 45%;
 }
 
-.localisation_field {
+.product_field:hover{
+    border: none;
+}
+
+.localisation_field{
     background-color: #e6e6e6;
     color: #aaaaaa;
     border: none;
     padding: 1%;
     border-radius: 15px;
-    width: 25%;
+    width: 28%;
+}
+
+.localisation_field:hover{
+    border: none;
 }
 
 .category_field {
@@ -270,4 +281,30 @@ footer {
     padding: 1%;
     border-radius: 15px;
     width: 15%;
+    margin-left: 4%;
+    margin-top: 4%;
+}
+
+.category_field:hover{
+    border: none;
+}
+
+.test{
+    display: inline;
+}
+
+.types{
+    color: #073C77;
+    margin-top: 4%;
+    margin-left: 5%;
+}
+
+.types2{
+    color: #073C77;
+    margin-top: 4%;
+    margin-left: 5%;
+}
+
+.lestypes{
+    display: flex;
 }
