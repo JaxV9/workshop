@@ -24,6 +24,12 @@ def index(request):  # Affiche la page d'accueil avec la liste des annonces
     })
 
 
+#________________________________________________________________________Page profil
+
+def profil(request):
+
+    return render(request, "auctions/profil.html")
+
 
 #_________________________________________________________________________create_product
 

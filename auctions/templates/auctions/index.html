@@ -13,8 +13,8 @@
                 {% for field in form %}
                 <div>
                     {{ field.errors }}
-                    {{ field.label_tag }}
-                    {{ field }}
+                    <div>{{ field.label_tag }}
+                    {{ field }}</div>
                 </div>
                 {% endfor %}
                 <input type="submit" value="Rechercher un article">
