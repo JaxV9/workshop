@@ -9,33 +9,34 @@
 
     <p>{{ no_result }}</p>
 
+    <div class="cards">
+        {% for product in products %}
+            <div class="card">
 
-    {% for product in products %}
-        <div class="card">
+                <a href="{% url 'product_details' product.id %}">
+                    
+                    <p>{{ product.user }}</p>
+                    <img src="{{ product.image }}" class="product">
 
-            <a href="{% url 'product_details' product.id %}">
-                
-                <p>{{ product.user }}</p>
-                <img src="{{ product.image }}" class="product">
+                    {% if product.exchange == False %}
 
-                {% if product.exchange == False %}
+                        <p>Don</p>
 
-                    <p>Don</p>
+                    {% else %}
 
-                {% else %}
+                        <p>Échange</p>
 
-                    <p>Échange</p>
+                    {% endif %}
+                    <p>{{ product.category }}</p>
+                    <p class="title_listing">{{ product.title }}</p>
+                    <p>{{ product.localisation }}</p>
+                    <p>{{ product.date }}</p>
 
-                {% endif %}
-                <p>{{ product.category }}</p>
-                <p>{{ product.title }}</p>
-                <p>{{ product.localisation }}</p>
-                <p>{{ product.date }}</p>
+                </a>
 
-            </a>
+            </div>
 
-        </div>
-
-    {% endfor %}
+        {% endfor %}
+    </div>
 
 {% endblock %}
