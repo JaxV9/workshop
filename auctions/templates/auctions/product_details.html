@@ -28,9 +28,13 @@
                 <button type="submit" value="J'échange">J'échange</button>
 
             </form>
+
+            <p>{{ confirmationMessageUser }}</p>
         {% else %}
             
         {% endif %}
+
+ 
 
         <a href="mailto: {{ product.user.email }}"><button>Contacter l'annonceur</button></a>
 

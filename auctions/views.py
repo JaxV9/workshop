@@ -7,7 +7,7 @@ from django.contrib.auth.decorators import login_required
 #from django.contrib.auth.models import User
 from .models import User, Category, State, Product, Comment, Exchange, Gift
 from .forms import ProductForm, SearchForm
-
+from django.contrib import messages
 
 
 
@@ -90,6 +90,8 @@ def product_details(request, product_id):
     products_user = Product.objects.filter(user=request.user, exchange=True)
     exchanges_products = Exchange.objects.filter(product=product)
 
+    confirmationMessageUser = ""
+
     if request.method == 'POST':
         if 'products_user' in request.POST:
             selected_product_id = request.POST.get('products_user')
@@ -100,6 +102,8 @@ def product_details(request, product_id):
             exchange.product = product
             exchange.exchange = selected_product
             exchange.save()
+        
+            confirmationMessageUser = "Vous avez confirmé l'échange. Vous pouvez maintenant attendre la réponse de l'auteur de l'offre."
 
         elif 'confirmation' in request.POST: #formulaire pour confirmer l'échange
 
@@ -115,13 +119,18 @@ def product_details(request, product_id):
             exchange.delete = True
             exchange.save()
 
-        return redirect('product_details', product_id=product_id)
+        return render(request, "auctions/product_details.html", {
+            "product": product,
+            "products_user": products_user,
+            "exchanges_products": exchanges_products,
+            "confirmationMessageUser": confirmationMessageUser})
 
     else:
         return render(request, "auctions/product_details.html", {
             "product": product,
             "products_user": products_user,
             "exchanges_products": exchanges_products,
+            "confirmationMessageUser": confirmationMessageUser
         })
 
 

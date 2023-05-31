@@ -1,7 +1,6 @@
 {% extends "auctions/layout.html" %}
 
 {% block body %}
-<link href="{% static 'auctions/styles.css' %}" rel="stylesheet">
 <form method="GET" action="{% url 'products' %}">
     {{ search.as_p }}
     <input type="submit" value="Rechercher un article" class="research">

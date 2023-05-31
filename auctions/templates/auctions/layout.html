@@ -14,11 +14,10 @@
 <body>
     <header>
         <nav class="nav">
-            <div class="leftpart"><a href="#"><img src='../../static/auctions/images/logo.png' alt="Logo_swap'it"></a>
+            <div class="leftpart"><a href="{% url 'index' %}"><img src='../../static/auctions/images/logo.png' alt="Logo_swap'it"></a>
             </div>
-            <!-- {% if user.is_authenticated %}
-             <p>Hello {{ request.user }}</p>
-            {% endif %} -->
+            <p>{{ user.username }}</p>
+            
             <div class="middlepart">
                 <ul class="nav-list">
                     <li><a href="/products?category=13">Mode</a></li>
