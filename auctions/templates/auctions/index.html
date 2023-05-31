@@ -2,32 +2,37 @@
 {% load static %}
 
 {% block body %}
-    <div class="main">
+<div class="main">
 
-        {% if user.is_authenticated %}
-        <div class="hello"><h3>Bonjour {{ request.user }},</h3></div>
-        {% endif %}
-
-        <div class="addexchange">
-            <img src="../../static/auctions/images/plus.png" alt="plus" class="plus"><a href="{% url 'create_product' %}" class="ajout">Ajouter un article</a>
-        </div>
-
-        <div class="exchange">
-            <div class="lestypes">
-                <div class="types active" id="types"><p>J'échange</p></div>
-            </div>
-            <form method="GET" action="{% url 'products' %}">
-                {% csrf_token %}
-                {% for field in form %}
-                <div class="test">
-                    {{ field.errors }}
-                    {{ field.label_tag }}
-                    {{ field }}
-                </div>
-                {% endfor %}
-                <input type="submit" value="Rechercher un article" class="research">
-            </form>
-        </div>
+    {% if user.is_authenticated %}
+    <div class="hello">
+        <h3>Bonjour {{ request.user }},</h3>
     </div>
+    {% endif %}
+
+    <div class="addexchange">
+        <img src="../../static/auctions/images/plus.png" alt="plus" class="plus"><a href="{% url 'create_product' %}"
+            class="ajout">Ajouter un article</a>
+    </div>
+
+    <div class="exchange">
+        <div class="lestypes">
+            <div class="types active" id="types">
+                <p>J'échange</p>
+            </div>
+        </div>
+        <form method="GET" action="{% url 'products' %}">
+            {% csrf_token %}
+            {% for field in form %}
+            <div class="test">
+                {{ field.errors }}
+                {{ field.label_tag }}
+                {{ field }}
+            </div>
+            {% endfor %}
+            <input type="submit" value="Rechercher un article" class="research">
+        </form>
+    </div>
+</div>
 
 {% endblock %}
