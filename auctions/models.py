@@ -5,8 +5,6 @@ from django.db import models
 
 class User(AbstractUser):
     image = models.URLField(max_length=1000, blank=True)
-<<<<<<< HEAD
-=======
     noisette = models.IntegerField(default=0, validators=[MinValueValidator(0), MaxValueValidator(1000)])
     phone = models.CharField(max_length=20, blank=True)
     city = models.CharField(max_length=64, blank=True)
@@ -14,8 +12,7 @@ class User(AbstractUser):
     postal_code = models.CharField(max_length=5, blank=True)
     biography = models.TextField(blank=True)
     rue = models.CharField(max_length=100, blank=True)
->>>>>>> 5257f2dad6c8a496e100d2bda063d66c31e9ec7f
-
+    
 class Category(models.Model):
     name = models.CharField(max_length=64)
 
