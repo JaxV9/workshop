@@ -5,8 +5,8 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse
 from django.contrib.auth.decorators import login_required
 #from django.contrib.auth.models import User
-from .models import User, Category, State, Product, Comment
-from .forms import ProductForm, SearchForm, ExchangeForm
+from .models import User, Category, State, Product, Comment, Exchange, Gift
+from .forms import ProductForm, SearchForm
 
 
 
@@ -83,24 +83,31 @@ def products(request):
 
 #_________________________________________________________________________product details
 
+@login_required
 def product_details(request, product_id):
     product = get_object_or_404(Product, pk=product_id)
 
-    products_user = Product.objects.filter(user=request.user)
+    products_user = Product.objects.filter(user=request.user, exchange=True)
 
-    exchange = ExchangeForm(request.POST or None)
+    exchanges_products = Exchange.objects.filter(product=product)
 
-    user_connected = request.user
+    if request.method == 'POST':
+        selected_product_id = request.POST.get('products_user')
+        selected_product = get_object_or_404(Product, pk=selected_product_id)
 
+        exchange = Exchange()
+        exchange.user = request.user
+        exchange.product = product
+        exchange.exchange = selected_product
+        exchange.save()
+        return redirect('product_details', product_id=product_id)
 
-    return render(request, "auctions/product_details.html", {
-        "product": product,
-        "exchange": exchange,
-        "products_user": products_user,
-        "user_connected": user_connected
-    })
-
-
+    else:
+        return render(request, "auctions/product_details.html", {
+            "product": product,
+            "products_user": products_user,
+            "exchanges_products": exchanges_products
+        })
 
 
 

@@ -83,17 +83,3 @@ class SearchForm(forms.Form):
         if not any(cleaned_data.values()):
             raise ValidationError("Au moins un champ doit être rempli.")
         
-
-
-#_________________________Exchange form
-
-class ExchangeForm(forms.ModelForm):
-    class Meta:
-        model = Exchange
-        fields = ['exchange']
-
-    def __init__(self, *args, **kwargs):
-        self.request = kwargs.pop('request', None)  
-        super(ExchangeForm, self).__init__(*args, **kwargs)
-        if self.request is not None:
-            self.fields['exchange'].queryset = Product.objects.filter(user=self.request.user)

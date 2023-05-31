@@ -47,6 +47,7 @@ class Exchange(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name="exchanges")
     exchange = models.ForeignKey(Product, on_delete=models.CASCADE, related_name="exchanges2")
     confirmation = models.BooleanField(null=True, default=False)
+    delete = models.BooleanField(null=True, default=False)
 
     def __str__(self):
         return f"{self.user} {self.product} {self.exchange}"

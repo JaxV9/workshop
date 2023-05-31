@@ -29,14 +29,47 @@
 
             </form>
         {% else %}
-            <p>{{ product.price }} €</p>
-        {% endif %}
-
-        {% if request.user == product.user %}
-            <a href="/products/{{ product.id }}/edit"><button>Modifier</button></a>
-            <a href="/products/{{ product.id }}/delete"><button>Supprimer</button></a>
+            
         {% endif %}
 
         <a href="mailto: {{ product.user.email }}"><button>Contacter l'annonceur</button></a>
+
+
+        {% if request.user == product.user %}
+
+            {% for exchanges_product in exchanges_products %}
+
+                <p>{{ exchanges_product.user }}</p>
+                <p>{{ exchanges_product.exchange }}</p>
+                <img src="{{ exchanges_product.exchange.image }}" />
+                <p>{{ exchanges_product.exchange.state }}</p>
+
+                <form action="" method="post">
+
+                    {% csrf_token %}
+
+                    <button type="submit" value="Accepter">Accepter</button>
+                    
+                </form>
+                
+                <form action="" method="post">
+
+                    {% csrf_token %}
+                    <button type="submit" value="Refuser">Refuser</button>
+                </form>
+
+
+            {% endfor %}
+
+        {% else %}
+
+        {% endif %}
+
+
+
+
+
+
+
 
 {% endblock %}
