@@ -28,9 +28,6 @@ def index(request):  # Affiche la page d'accueil avec la liste des annonces
 
 def profil(request):
 
-    user = request.user
-
-
     return render(request, "auctions/profil.html")
 
 

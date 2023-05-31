@@ -10,19 +10,19 @@ class ProductForm(forms.ModelForm):
         max_length=64,
         required=True,
         label='Titre',
-        widget=forms.TextInput(attrs={'class': 'title_product_form'})
+        widget=forms.TextInput(attrs={'class': 'title_product_form', 'placeholder': 'Compléter ...'})
     )
 
     description = forms.CharField(
         required=True,
         label='Description',
-        widget=forms.Textarea(attrs={'class': 'description_product_form'})
+        widget=forms.Textarea(attrs={'class': 'description_product_form', 'placeholder': 'Compléter ...'})
     )
 
     image = forms.URLField(
         required=True,
         label='Image',
-        widget=forms.URLInput(attrs={'class': 'image_product_form'})
+        widget=forms.URLInput(attrs={'class': 'image_product_form', 'placeholder': 'Ajouter l\'URL de votre image ...'})
     )
 
     exchange = forms.BooleanField(
@@ -47,7 +47,7 @@ class ProductForm(forms.ModelForm):
         max_length=64,
         required=True,
         label='Localisation',
-        widget=forms.TextInput(attrs={'class': 'localisation_product_form'})
+        widget=forms.TextInput(attrs={'class': 'localisation_product_form', 'placeholder': 'Compléter ...'})
     )
 
     class Meta:
