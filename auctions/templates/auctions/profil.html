@@ -1,9 +1,10 @@
 {% extends "auctions/layout.html" %}
 
 {% block body %}
-
-    <img src="{{ request.user.image}}">
-
+    <div class="bg"></div>
+    <div class="imageuserdiv">
+        <img src="{{ request.user.image}}" class="imageuser">
+    </div>  
     <p>{{ request.user }}</p>
 
     {% if request.user.noisettes > 0 %}
