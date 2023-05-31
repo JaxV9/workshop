@@ -14,7 +14,7 @@
 <body>
     <header>
         <nav class="nav">
-            <div class="leftpart"><a href="{% url 'index' %}"><img src='../../static/auctions/images/logo.png' alt="Logo_swap'it"></a></div>
+            <div class="leftpart"><a href="{% url 'index' %}"><img src='../../static/auctions/images/logo.png' alt="Logo_swap'it"><p class="logoname">swap'it</p></a></div>
             {% if user.is_authenticated %}
              <p>Hello {{ request.user }}</p>
             {% endif %}

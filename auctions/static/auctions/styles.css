@@ -93,7 +93,7 @@ a:hover {
     align-items: center;
     height: 800px;
     margin: 0;
-    max-width: 100%;
+    width: 100%;
     background-image: url('images/fond.jpg');
     background-repeat: no-repeat;
 }
@@ -115,7 +115,6 @@ footer {
     background-color: #173B6E;
     color: #fff;
     padding: 2rem;
-
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -205,6 +204,7 @@ footer {
     height: 24px;
 }
 
+/* main */
 .main .addexchange {
     position: absolute;
     top: 35%;
@@ -307,4 +307,14 @@ footer {
 
 .lestypes{
     display: flex;
+}
+
+.logoname{
+    display: inline;
+    margin-left: 20px;
+    font-weight: bolder;
+}
+
+.logoname:hover{
+    text-decoration: none;
 }
