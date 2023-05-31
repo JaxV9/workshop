@@ -27,7 +27,6 @@ class Product(models.Model):
     exchange = models.BooleanField(null=True, default=False)
     state = models.ForeignKey(State, on_delete=models.CASCADE, related_name="products")
     category = models.ForeignKey(Category, on_delete=models.CASCADE, related_name="products")
-    price = models.DecimalField(max_digits=10, decimal_places=2, validators=[MinValueValidator(0), MaxValueValidator(5)])
     localisation = models.CharField(max_length=64)
     date = models.DateTimeField(auto_now_add=True)
 
@@ -42,3 +41,28 @@ class Comment(models.Model):
 
     def __str__(self):
         return f"{self.content} {self.user} {self.product}"
+
+class Exchange(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="exchanges")
+    product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name="exchanges")
+    exchange = models.ForeignKey(Product, on_delete=models.CASCADE, related_name="exchanges2")
+    confirmation = models.BooleanField(null=True, default=False)
+    delete = models.BooleanField(null=True, default=False)
+
+    def __str__(self):
+        return f"{self.user} {self.product} {self.exchange}"
+    
+class Gift(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="gifts")
+    product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name="gifts")
+    confirmation = models.BooleanField(null=True, default=False)
+
+    def __str__(self):
+        return f"{self.user} {self.product}"
+    
+class Watchlist(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="watchlists")
+    product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name="watchlists")
+
+    def __str__(self):
+        return f"{self.user} {self.product}"

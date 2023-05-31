@@ -1,16 +1,41 @@
 {% extends "auctions/layout.html" %}
 
 {% block body %}
-
+<link href="{% static 'auctions/styles.css' %}" rel="stylesheet">
 <form method="GET" action="{% url 'products' %}">
     {{ search.as_p }}
-    <input type="submit" value="Search">
+    <input type="submit" value="Rechercher un article" class="research">
 </form>
 
-    {% for product in products %}
 
-        <p>{{ product.title }}</p>
-        <img src="{{ product.image }}" class="product">
+    <p>{{ no_result }}</p>
+
+
+    {% for product in products %}
+        <div class="card">
+
+            <a href="{% url 'product_details' product.id %}">
+                
+                <p>{{ product.user }}</p>
+                <img src="{{ product.image }}" class="product">
+
+                {% if product.exchange == False %}
+
+                    <p>Don</p>
+
+                {% else %}
+
+                    <p>Échange</p>
+
+                {% endif %}
+                <p>{{ product.category }}</p>
+                <p>{{ product.title }}</p>
+                <p>{{ product.localisation }}</p>
+                <p>{{ product.date }}</p>
+
+            </a>
+
+        </div>
 
     {% endfor %}
 

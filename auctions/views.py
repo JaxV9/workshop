@@ -5,7 +5,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse
 from django.contrib.auth.decorators import login_required
 #from django.contrib.auth.models import User
-from .models import User, Category, State, Product, Comment
+from .models import User, Category, State, Product, Comment, Exchange, Gift
 from .forms import ProductForm, SearchForm
 
 
@@ -16,7 +16,7 @@ from .forms import ProductForm, SearchForm
 
 def index(request):  # Affiche la page d'accueil avec la liste des annonces
     
-    search_form = SearchForm(request.GET or None)
+    search_form = SearchForm(request.GET or None) # Crée un formulaire de recherche
     
     return render(request, "auctions/index.html", {
         "products": Product.objects.all(),
@@ -52,11 +52,15 @@ def create_product(request):
 
 #_________________________________________________________________________product result
 
-@login_required(login_url='/login')
+
 def products(request):
     search = SearchForm(request.GET)
-    products = Product.objects.all()
+    products = []
+
+    no_result = ""
+
     if search.is_valid():
+        products = Product.objects.all()
         if search.cleaned_data["category"]:
             products = products.filter(category=search.cleaned_data["category"])
         if search.cleaned_data["product"]:
@@ -64,13 +68,47 @@ def products(request):
         if search.cleaned_data["localisation"]:
             products = products.filter(localisation__icontains=search.cleaned_data["localisation"])
 
+
+    if not products:
+        no_result = "Aucun résultat"
+
+
     return render(request, "auctions/products.html", {
         "products": products,
-        "search": search
+        "search": search,
+        "no_result": no_result
     })
 
 
-#_________________________________________________________________________categories
+
+#_________________________________________________________________________product details
+
+@login_required
+def product_details(request, product_id):
+    product = get_object_or_404(Product, pk=product_id)
+
+    products_user = Product.objects.filter(user=request.user, exchange=True)
+
+    exchanges_products = Exchange.objects.filter(product=product)
+
+    if request.method == 'POST':
+        selected_product_id = request.POST.get('products_user')
+        selected_product = get_object_or_404(Product, pk=selected_product_id)
+
+        exchange = Exchange()
+        exchange.user = request.user
+        exchange.product = product
+        exchange.exchange = selected_product
+        exchange.save()
+        return redirect('product_details', product_id=product_id)
+
+    else:
+        return render(request, "auctions/product_details.html", {
+            "product": product,
+            "products_user": products_user,
+            "exchanges_products": exchanges_products
+        })
+
 
 
 # _________________________________________________________________________PAGE DE CONNEXION

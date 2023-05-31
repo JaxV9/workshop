@@ -2,10 +2,38 @@
 {% load static %}
 
 {% block body %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Swap'it</title>
+    <link href="{% static 'auctions/styles.css' %}" rel="stylesheet">
+</head>
+<body>
+    <div class="main">
+        <div class="addexchange">
+            <img src="../../static/auctions/images/plus.png" alt="plus" class="plus"><a href="{% url 'create_product' %}" class="ajout">Ajouter un article</a>
+        </div>
+        <div class="exchange">
+            <form method="GET" action="{% url 'products' %}">
+                {{ form.as_p }}
+                <input type="submit" value="Rechercher un article" class="research">
+            </form>
+        </div>
+    </div>
+</body>
+</html>
 
 <form method="GET" action="{% url 'products' %}">
-    {{ form.as_p }}
-    <input type="submit" value="Search">
+    {% csrf_token %}
+    {% for field in form %}
+    <div>
+        {{ field.errors }}
+        {{ field.label_tag }}
+        {{ field }}
+    </div>
+    {% endfor %}
+    <input type="submit" value="Rechercher un article">
 </form>
 
 {% endblock %}

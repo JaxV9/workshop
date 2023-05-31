@@ -1,5 +1,6 @@
 from django import forms
-from .models import User, Category, State, Product, Comment
+from django.core.exceptions import ValidationError
+from .models import User, Category, State, Product, Comment, Exchange, Gift
 
 
 #_________________________Create product form
@@ -41,15 +42,7 @@ class ProductForm(forms.ModelForm):
         required=True,
         label='Catégorie'
     )
-
-    price = forms.DecimalField(
-        max_digits=10,
-        decimal_places=2,
-        required=True,
-        label='Prix',
-        widget=forms.NumberInput(attrs={'class': 'price_product_form'})
-    )
-
+    
     localisation = forms.CharField(
         max_length=64,
         required=True,
@@ -66,7 +59,6 @@ class ProductForm(forms.ModelForm):
             "exchange",
             "state",
             "category",
-            "price",
             "localisation"
         ]
 
@@ -79,6 +71,15 @@ class SearchForm(forms.Form):
 
     def __init__(self, *args, **kwargs):
         super(SearchForm, self).__init__(*args, **kwargs)
-        self.fields['category'].widget.attrs.update({'class': 'category_field'})
-        self.fields['product'].widget.attrs.update({'class': 'product_field'})
-        self.fields['localisation'].widget.attrs.update({'class': 'localisation_field'})
+        self.fields['category'].widget.attrs.update({'class': 'category_field', 'placeholder': ''})
+        self.fields['category'].label = ""
+        self.fields['product'].widget.attrs.update({'class': 'product_field', 'placeholder': 'Que recherchez-vous ?'})
+        self.fields['product'].label = ""
+        self.fields['localisation'].widget.attrs.update({'class': 'localisation_field', 'placeholder': 'Saisissez une ville, une région'})
+        self.fields['localisation'].label = ""
+
+    def clean(self):
+        cleaned_data = super().clean()
+        if not any(cleaned_data.values()):
+            raise ValidationError("Au moins un champ doit être rempli.")
+        

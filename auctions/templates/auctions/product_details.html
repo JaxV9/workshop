@@ -1,0 +1,75 @@
+{% extends "auctions/layout.html" %}
+
+
+{% block body %}
+
+    <p><a href="/products?category={{ product.category.id }}">{{ product.category}}</a> &gt;
+
+        <a href="/products?category={{ product.category.id }}&localisation={{ product.localisation }}">{{ product.localisation }}</a></p>
+
+        <img src="{{ product.image }}" class="product_details">
+        <p>{{ product.category }}</p>
+        <p>{{ product.title }}</p>
+        <p>{{ product.description }}</p>
+        <p>{{ product.localisation }}</p>
+        <p>{{ product.state }}</p>
+
+        {% if product.exchange == True and request.user != product.user%} {% comment %}Si l'annonce est une enchère alors on propose d'échanger{% endcomment %}
+            <form action="" method="post">
+
+                {% csrf_token %}
+
+                <select name="products_user" id="products_user">
+                    {% for product_user in products_user %}
+                        <option value="{{ product_user.id }}">{{ product_user.title }}</option>
+                    {% endfor %}
+                </select>
+
+                <button type="submit" value="J'échange">J'échange</button>
+
+            </form>
+        {% else %}
+            
+        {% endif %}
+
+        <a href="mailto: {{ product.user.email }}"><button>Contacter l'annonceur</button></a>
+
+
+        {% if request.user == product.user %}
+
+            {% for exchanges_product in exchanges_products %}
+
+                <p>{{ exchanges_product.user }}</p>
+                <p>{{ exchanges_product.exchange }}</p>
+                <img src="{{ exchanges_product.exchange.image }}" />
+                <p>{{ exchanges_product.exchange.state }}</p>
+
+                <form action="" method="post">
+
+                    {% csrf_token %}
+
+                    <button type="submit" value="Accepter">Accepter</button>
+                    
+                </form>
+                
+                <form action="" method="post">
+
+                    {% csrf_token %}
+                    <button type="submit" value="Refuser">Refuser</button>
+                </form>
+
+
+            {% endfor %}
+
+        {% else %}
+
+        {% endif %}
+
+
+
+
+
+
+
+
+{% endblock %}
