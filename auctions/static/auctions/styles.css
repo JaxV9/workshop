@@ -95,7 +95,7 @@ a:hover {
     margin: 0;
     width: 100%;
     background-image: url('images/fond.jpg');
-    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 .main .exchange {
@@ -317,6 +317,13 @@ footer {
 
 .logoname:hover {
     text-decoration: none;
+}
+
+.hello {
+    margin-top: -35%;
+    left: 10%;
+    position: absolute;
+    font-weight: bold;
 }
 
 
