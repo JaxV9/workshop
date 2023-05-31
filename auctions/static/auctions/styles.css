@@ -193,11 +193,16 @@ footer {
     align-items: flex-end;
 }
 
+.footer-bottom-right {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .footer-bottom-right img {
     margin-left: 0.5rem;
     width: 24px;
     height: 24px;
-    margin-top: 5%;
 }
 
 .main .addexchange {

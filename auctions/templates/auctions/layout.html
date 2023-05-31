@@ -14,12 +14,13 @@
 <body>
     <header>
         <nav class="nav">
-            <div class="leftpart"><a href="#"><img src='../../static/auctions/images/logo.png' alt="Logo_swap'it"></a></div>
-            {% if user.is_authenticated %}
+            <div class="leftpart"><a href="#"><img src='../../static/auctions/images/logo.png' alt="Logo_swap'it"></a>
+            </div>
+            <!-- {% if user.is_authenticated %}
              <p>Hello {{ request.user }}</p>
-            {% endif %}
+            {% endif %} -->
             <div class="middlepart">
-                <ul>
+                <ul class="nav-list">
                     <li><a href="/products?category=13">Mode</a></li>
                     <li><a href="/products?category=14">Maison</a></li>
                     <li><a href="/products?category=15">Multimédia</a></li>
@@ -57,7 +58,7 @@
             </div>
         </nav>
     </header>
-    
+
     <div class="under_body">
         {% block body %}
         {% endblock %}
