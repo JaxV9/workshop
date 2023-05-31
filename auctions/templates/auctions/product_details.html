@@ -45,21 +45,23 @@
                 <p>{{ exchanges_product.exchange.state }}</p>
 
                 <form action="" method="post">
-
                     {% csrf_token %}
-
+                    <input type="hidden" name="confirmation" value="{{ exchanges_product.id }}">
                     <button type="submit" value="Accepter">Accepter</button>
-                    
                 </form>
+                
                 
                 <form action="" method="post">
 
                     {% csrf_token %}
+
+                    <input type="hidden" name="refuse" value="{{ exchanges_product.id }}">
                     <button type="submit" value="Refuser">Refuser</button>
                 </form>
 
 
             {% endfor %}
+            
 
         {% else %}
 

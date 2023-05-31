@@ -88,26 +88,46 @@ def product_details(request, product_id):
     product = get_object_or_404(Product, pk=product_id)
 
     products_user = Product.objects.filter(user=request.user, exchange=True)
-
     exchanges_products = Exchange.objects.filter(product=product)
 
     if request.method == 'POST':
-        selected_product_id = request.POST.get('products_user')
-        selected_product = get_object_or_404(Product, pk=selected_product_id)
+        if 'products_user' in request.POST:
+            selected_product_id = request.POST.get('products_user')
+            selected_product = get_object_or_404(Product, pk=selected_product_id)
 
-        exchange = Exchange()
-        exchange.user = request.user
-        exchange.product = product
-        exchange.exchange = selected_product
-        exchange.save()
+            exchange = Exchange()
+            exchange.user = request.user
+            exchange.product = product
+            exchange.exchange = selected_product
+            exchange.save()
+
+        elif 'confirmation' in request.POST: #formulaire pour confirmer l'échange
+
+            exchange_id = request.POST.get('confirmation')
+            exchange = get_object_or_404(Exchange, pk=exchange_id)
+            exchange.confirmation = True
+            exchange.save()
+        
+        elif 'refuse' in request.POST: #formulaire pour refuser l'échange
+
+            exchange_id = request.POST.get('refuse')
+            exchange = get_object_or_404(Exchange, pk=exchange_id)
+            exchange.delete = True
+            exchange.save()
+
         return redirect('product_details', product_id=product_id)
 
     else:
         return render(request, "auctions/product_details.html", {
             "product": product,
             "products_user": products_user,
-            "exchanges_products": exchanges_products
+            "exchanges_products": exchanges_products,
         })
+
+
+
+
+
 
 
 
