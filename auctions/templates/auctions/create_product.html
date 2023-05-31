@@ -2,16 +2,20 @@
 
 {% block body %}
 
-    <form method="post" action="{% url 'create_product' %}">
+<div class="form-container">
+    <form method="post" action="{% url 'create_product' %}" class="form-create-product">
+        <h2>Ajout d'un article</h2>
         {% csrf_token %}
         {% for field in form %}
-            {{ field.errors }}
-            <div>{{ field.label_tag }}
-                {{ field }}
-            </div>
+        {{ field.errors }}
+        <div class="form-input">
+            {{ field.label_tag }}
+            {{ field }}
+        </div>
         {% endfor %}
-
-        <input type="submit" value="Create">
+        
+        <input type="submit" value="Ajouter un article" class="form-submit">
     </form>
+</div>
 
 {% endblock %}

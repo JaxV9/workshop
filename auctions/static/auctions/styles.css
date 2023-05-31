@@ -98,7 +98,7 @@ a:hover {
     background-repeat: no-repeat;
 }
 
-.main .exchange{
+.main .exchange {
     width: 80%;
     height: 350px;
     padding: 10px;
@@ -257,11 +257,11 @@ footer {
     width: 45%;
 }
 
-.product_field:hover{
+.product_field:hover {
     border: none;
 }
 
-.localisation_field{
+.localisation_field {
     background-color: #e6e6e6;
     color: #aaaaaa;
     border: none;
@@ -270,7 +270,7 @@ footer {
     width: 28%;
 }
 
-.localisation_field:hover{
+.localisation_field:hover {
     border: none;
 }
 
@@ -285,36 +285,99 @@ footer {
     margin-top: 4%;
 }
 
-.category_field:hover{
+.category_field:hover {
     border: none;
 }
 
-.test{
+.test {
     display: inline;
 }
 
-.types{
+.types {
     color: #073C77;
     margin-top: 4%;
     margin-left: 5%;
 }
 
-.types2{
+.types2 {
     color: #073C77;
     margin-top: 4%;
     margin-left: 5%;
 }
 
-.lestypes{
+.lestypes {
     display: flex;
 }
 
-.logoname{
+.logoname {
     display: inline;
     margin-left: 20px;
     font-weight: bolder;
 }
 
-.logoname:hover{
+.logoname:hover {
     text-decoration: none;
+}
+
+
+/* Create Product Page */
+
+.form-container {
+    padding-top: 8rem;
+
+    background-image: url('images/fond.jpg');
+    background-size: cover;
+}
+
+.form-create-product {
+    width: 100%;
+    height: 100%;
+    padding: 2rem 10rem;
+    background-color: #fff;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.form-submit {
+    background-color: #073C77;
+    color: white;
+    padding: 8px 16px;
+    border-radius: 10px;
+    border: none;
+    margin-left: auto;
+    margin-top: 2rem;
+}
+
+.form-input {
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.form-input label {
+    font-size: 16px;
+    font-weight: 500;
+    margin-top: 1rem;
+}
+
+.form-input input,
+.form-input textarea {
+    width: 100%;
+    border: 1px solid #e0e0e0;
+    border-radius: 5px;
+    font-size: 10px;
+    padding: 8px 16px;
+}
+
+.exchange_product_form {
+    width: fit-content !important;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
 }
