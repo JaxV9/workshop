@@ -14,7 +14,7 @@
         <p>{{ product.localisation }}</p>
         <p>{{ product.state }}</p>
 
-        {% if product.exchange == True%} {% comment %}Si l'annonce est une enchère alors on propose d'échanger{% endcomment %}
+        {% if product.exchange == True and request.user != product.user%} {% comment %}Si l'annonce est une enchère alors on propose d'échanger{% endcomment %}
             <form action="" method="post">
 
                 {% csrf_token %}
@@ -28,10 +28,14 @@
                 <button type="submit" value="J'échange">J'échange</button>
 
             </form>
+        {% else %}
+            <p>{{ product.price }} €</p>
         {% endif %}
 
-
-        <p>{{ product.user }}</p>
+        {% if request.user == product.user %}
+            <a href="/products/{{ product.id }}/edit"><button>Modifier</button></a>
+            <a href="/products/{{ product.id }}/delete"><button>Supprimer</button></a>
+        {% endif %}
 
         <a href="mailto: {{ product.user.email }}"><button>Contacter l'annonceur</button></a>
 

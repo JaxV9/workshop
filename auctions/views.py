@@ -90,11 +90,14 @@ def product_details(request, product_id):
 
     exchange = ExchangeForm(request.POST or None)
 
+    user_connected = request.user
+
 
     return render(request, "auctions/product_details.html", {
         "product": product,
         "exchange": exchange,
-        "products_user": products_user
+        "products_user": products_user,
+        "user_connected": user_connected
     })
 
 

@@ -15,6 +15,9 @@
     <header>
         <nav class="nav">
             <div class="leftpart">Logo</div>
+            {% if user.is_authenticated %}
+             <p>Hello {{ request.user }}</p>
+            {% endif %}
             <div class="middlepart">
                 <ul>
                     <li><a href="/products?category=13">Mode</a></li>
