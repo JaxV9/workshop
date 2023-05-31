@@ -388,3 +388,32 @@ footer {
     justify-content: flex-start;
     align-items: center;
 }
+
+/* Login Page */
+
+.login-main {
+    height: 60vh;
+    position: relative;
+}
+
+.background-container {
+    z-index: -1;
+    position: absolute;
+    bottom: 0;
+    height: 35vh;
+    width: 100%;
+    background-image: url('images/background_login_register.png');
+    background-size: cover;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-form-container {
+    margin: 5% auto;
+    padding: 1rem;
+    width: 50%;
+    background-color: #f8f8f8;
+    border-radius: 20px;
+}

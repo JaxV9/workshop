@@ -1,12 +1,14 @@
 {% extends "auctions/layout.html" %}
 
 {% block body %}
-    <div class="container">
+<div class="login-main">
+    <div class="background-container"></div>
+    <div class="login-form-container">
         <h1 class="page-title">Se connecter</h1>
         <form method="POST" class="login-form">
             {% csrf_token %}
             {% if message %}
-                <div class="alert alert-danger">{{ message }}</div>
+            <div class="alert alert-danger">{{ message }}</div>
             {% endif %}
             <div class="form-group">
                 <label for="username">Nom d'utilisateur :</label>
@@ -19,4 +21,5 @@
             <button type="submit" class="btn btn-primary">Se connecter</button>
         </form>
     </div>
+</div>
 {% endblock %}
