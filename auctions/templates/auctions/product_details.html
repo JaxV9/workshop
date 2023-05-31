@@ -32,11 +32,6 @@
             
         {% endif %}
 
-        {% if request.user == product.user %}
-            <a href="/products/{{ product.id }}/edit"><button>Modifier</button></a>
-            <a href="/products/{{ product.id }}/delete"><button>Supprimer</button></a>
-        {% endif %}
-
         <a href="mailto: {{ product.user.email }}"><button>Contacter l'annonceur</button></a>
 
 
@@ -54,9 +49,15 @@
                     {% csrf_token %}
 
                     <button type="submit" value="Accepter">Accepter</button>
-                    <button type="submit" value="Refuser">Refuser</button>
-
+                    
                 </form>
+                
+                <form action="" method="post">
+
+                    {% csrf_token %}
+                    <button type="submit" value="Refuser">Refuser</button>
+                </form>
+
 
             {% endfor %}
 
