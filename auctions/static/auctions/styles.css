@@ -312,9 +312,16 @@ footer {
 .logoname{
     display: inline;
     margin-left: 20px;
-    font-weight: bolder;
+    font-weight: bold;
 }
 
 .logoname:hover{
     text-decoration: none;
+}
+
+.hello{
+    margin-top: -35%;
+    left: 10%;
+    position: absolute;
+    font-weight: bold;
 }
