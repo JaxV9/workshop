@@ -312,7 +312,7 @@ footer {
 .logoname {
     display: inline;
     margin-left: 20px;
-    font-weight: bolder;
+    font-weight: bold;
 }
 
 .logoname:hover {

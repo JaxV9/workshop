@@ -8,18 +8,20 @@
 
     {% if request.user.noisettes > 0 %}
 
-        <h2>Noisettes : {{ request.user.noisettes }}</h2>
+        <h2>Noisettes : {{ request.user.noisette }}</h2>
 
     {% else %}
 
-        <h2>Noisette : {{ request.user.noisettes }} </h2>
+        <h2>Noisette : {{ request.user.noisette }} </h2>
 
     {% endif %}
 
-    <p>{{ request.user.email }}</p>
-    <p>{{ request.user.phone }}</p>
-    <p>{{ request.user.biography }}</p>
-    <p>{{ request.user.rue }}</p>
-    <p>{{ request.user.city }}</p>
+    <h2>Adresse</h2>
+
+        <p>{{ request.user.email }}</p>
+        <p>{{ request.user.phone }}</p>
+        <p>{{ request.user.biography }}</p>
+        <p>{{ request.user.rue }}</p>
+        <p>{{ request.user.city }}</p>
 
 {% endblock %}

@@ -3,6 +3,11 @@
 
 {% block body %}
     <div class="main">
+
+        {% if user.is_authenticated %}
+        <div class="hello"><h3>Bonjour {{ request.user }},</h3></div>
+        {% endif %}
+
         <div class="addexchange">
             <img src="../../static/auctions/images/plus.png" alt="plus" class="plus"><a href="{% url 'create_product' %}" class="ajout">Ajouter un article</a>
         </div>
