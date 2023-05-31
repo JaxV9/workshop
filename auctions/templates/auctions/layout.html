@@ -14,12 +14,13 @@
 <body>
     <header>
         <nav class="nav">
-            <div class="leftpart">Logo</div>
-            {% if user.is_authenticated %}
+            <div class="leftpart"><a href="#"><img src='../../static/auctions/images/logo.png' alt="Logo_swap'it"></a>
+            </div>
+            <!-- {% if user.is_authenticated %}
              <p>Hello {{ request.user }}</p>
-            {% endif %}
+            {% endif %} -->
             <div class="middlepart">
-                <ul>
+                <ul class="nav-list">
                     <li><a href="/products?category=13">Mode</a></li>
                     <li><a href="/products?category=14">Maison</a></li>
                     <li><a href="/products?category=15">Multimédia</a></li>
@@ -29,7 +30,7 @@
                 </ul>
             </div>
             <div class="rightpart">
-                <ul>
+                <ul class="nav-list">
                     <li>
                         <a href="" class="nav-btn">
                             <img src="../../static/auctions/images/fav_icon.png" alt="heart">
@@ -57,18 +58,76 @@
             </div>
         </nav>
     </header>
-    <div class="main">
-        <div class="addexchange">
-            <img src="../../static/auctions/images/plus.png" alt="plus" class="plus"><a href="{% url 'create_product' %}" class="ajout">Ajouter un article</a>
-        </div>
-        <div class="exchange">
-            
-        </div>
-    </div>
+
     <div class="under_body">
         {% block body %}
         {% endblock %}
     </div>
+
+    <footer>
+        <div class="footer-top">
+            <div class="footer-top-left">
+                <img src="../../static/auctions/images/swapit_logo.png" alt="">
+                <div class="footer-top-left-title">Swap'it</div>
+            </div>
+            <div class="footer-top-right">
+                <div class="footer-list">
+                    <ul>
+                        <li><a href="">Mode</a></li>
+                        <li><a href="">Vêtements</a></li>
+                        <li><a href="">Chaussures</a></li>
+                        <li><a href="">Bijoux & Montres</a></li>
+                        <li><a href="">Luxe & Tendance</a></li>
+                        <li><a href="">Accessoires & Bagagerie</a></li>
+                    </ul>
+                </div>
+                <div class="footer-list">
+                    <ul>
+                        <li><a href="">Maison</a></li>
+                        <li><a href="">Ameublement</a></li>
+                        <li><a href="">Électroménager</a></li>
+                        <li><a href="">Arts de la table</a></li>
+                        <li><a href="">Décoration</a></li>
+                        <li><a href="">Linge de maison</a></li>
+                    </ul>
+                </div>
+                <div class="footer-list">
+                    <ul>
+                        <li><a href="">Multimédia</a></li>
+                        <li><a href="">Informatique</a></li>
+                        <li><a href="">Consoles & Jeux vidéo</a></li>
+                        <li><a href="">Image & Son</a></li>
+                        <li><a href="">Téléphonie</a></li>
+                    </ul>
+                </div>
+                <div class="footer-list">
+                    <ul>
+                        <li><a href="">Loisirs</a></li>
+                        <li><a href="">DVD - Films</a></li>
+                        <li><a href="">Livres</a></li>
+                        <li><a href="">Vélos</a></li>
+                        <li><a href="">Sports & Hobbies</a></li>
+                        <li><a href="">Jeux & Jouets</a></li>
+                    </ul>
+                </div>
+                <div class="footer-list">
+                    <ul>
+                        <li><a href="">Bricolage</a></li>
+                        <li><a href="">Jardinage</a></li>
+                        <li><a href="">Outils de bricolage</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="footer-bottom-left">2023@tousdroitsréservés</div>
+            <div class="footer-bottom-right">
+                Rejoignez-nous sur :
+                <img src="../../static/auctions/images/instagram_icon.png" alt="" srcset="">
+                <img src="../../static/auctions/images/facebook_icon.png" alt="" srcset="">
+            </div>
+        </div>
+    </footer>
 
     <script src="../../static/auctions/app.js" defer></script>
 </body>
