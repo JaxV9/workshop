@@ -32,7 +32,7 @@ header {
     cursor: pointer;
 }
 
-ul {
+.nav-list {
     list-style: none;
     margin: 0;
     padding: 0;
@@ -42,7 +42,7 @@ ul {
     align-items: center;
 }
 
-ul>li {
+.nav-list>li {
     padding: 0 1rem;
 }
 
@@ -105,4 +105,96 @@ a:hover {
     border-radius: 30px;
     top: 75px;
     background-color: white;
+}
+
+/* Footer */
+
+footer {
+    width: 100%;
+    height: 500px;
+    background-color: #173B6E;
+    color: #fff;
+    padding: 2rem;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.footer-top {
+    height: 85%;
+    width: 100%;
+    padding: 2rem;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    border-bottom: 1px solid #3D6BBD;
+}
+
+.footer-top-left {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.footer-top-left img {
+    width: 90px;
+}
+
+.footer-top-left div {
+    font-size: 32px;
+    font-weight: 600;
+}
+
+.footer-top-right {
+    height: 100%;
+    width: 70%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.footer-list {
+    height: 100%;
+}
+
+.footer-list>ul {
+    height: 100%;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    color: #fff;
+}
+
+.footer-list>ul li:nth-child(1) a {
+    font-size: 24px !important;
+    font-weight: 500 !important;
+}
+
+.footer-list>ul li {
+    font-size: 14px;
+    margin-bottom: 1.5rem;
+}
+
+.footer-list>ul>li>a {
+    font-weight: 200;
+    color: #fff !important;
+}
+
+.footer-bottom {
+    height: 15%;
+    width: 100%;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+.footer-bottom-right img {
+    margin-left: 0.5rem;
+    width: 24px;
+    height: 24px;
 }
