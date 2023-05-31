@@ -4,7 +4,7 @@ from django.db import models
 
 
 class User(AbstractUser):
-    pass
+    image = models.URLField(max_length=1000, blank=True)
 
 class Category(models.Model):
     name = models.CharField(max_length=64)
