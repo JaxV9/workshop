@@ -14,7 +14,7 @@
 <body>
     <header>
         <nav class="nav">
-            <div class="leftpart">Logo</div>
+            <div class="leftpart"><a href="#"><img src='../../static/auctions/images/logo.png' alt="Logo_swap'it"></a></div>
             {% if user.is_authenticated %}
              <p>Hello {{ request.user }}</p>
             {% endif %}
@@ -57,14 +57,7 @@
             </div>
         </nav>
     </header>
-    <div class="main">
-        <div class="addexchange">
-            <img src="../../static/auctions/images/plus.png" alt="plus" class="plus"><a href="{% url 'create_product' %}" class="ajout">Ajouter un article</a>
-        </div>
-        <div class="exchange">
-            
-        </div>
-    </div>
+    
     <div class="under_body">
         {% block body %}
         {% endblock %}

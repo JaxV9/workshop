@@ -84,27 +84,27 @@ a:hover {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 700px;
+    height: 800px;
     margin: 0;
     max-width: 100%;
     background-image: url('images/fond.jpg');
+    background-repeat: no-repeat;
 }
 
 .main .exchange {
     width: 80%;
-    height: 400px;
+    height: 350px;
     padding: 10px;
     position: relative;
     border-radius: 30px;
-    top: 45px;
     background-color: white;
-    margin-top: 30px;
+    margin-top: 5%;
 }
 
 .main .addexchange {
     position: absolute;
-    top: 250px;
-    right: 155px;
+    top: 40%;
+    right: 10%;
     background-color: white;
     padding: 13px;
     border: solid 2px #073C77;
@@ -129,4 +129,41 @@ a:hover {
 
 .card {
     width: fit-content;
+}
+
+.research{
+    background-color: #073C77;
+    color: white;
+    padding: 1.5%;
+    padding-top: 1%;
+    padding-bottom: 1%;
+    border-radius: 15px;
+    border: none;
+}
+
+.product_field{
+    background-color: #e6e6e6;
+    color: #aaaaaa;
+    border: none;
+    padding: 1%;
+    border-radius: 15px;
+    width: 45%;
+}
+
+.localisation_field{
+    background-color: #e6e6e6;
+    color: #aaaaaa;
+    border: none;
+    padding: 1%;
+    border-radius: 15px;
+    width: 25%;
+}
+
+.category_field{
+    background-color: #e6e6e6;
+    color: #aaaaaa;
+    border: none;
+    padding: 1%;
+    border-radius: 15px;
+    width: 15%;
 }
